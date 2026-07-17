@@ -1077,27 +1077,25 @@
     <!-- Content Grid -->
     <section class="content-section" id="contentGrid">
         <div class="content-grid">
-            <!-- Card 1 - Free Preview (local videos, no link) -->
-            <div class="content-card" data-category="video" data-vip="false" onclick="playPreview(this)">
+            <!-- Card 1 - Photo Gallery -->
+            <div class="content-card" data-category="photo" data-vip="false" onclick="openVideoPage('https://y2f5yf.me/v/9374998e94')">
                 <div class="card-media">
-                    <video muted loop playsinline autoplay>
-                        <source src="ScreenRecording_07-10-2026 16-37-18_1.mp4" type="video/mp4">
-                    </video>
-                    <div class="card-badge free">GRATUIT</div>
+                    <iframe src="https://y2f5yf.me/v/9374998e94" scrolling="no" frameborder="0"></iframe>
+                    <div class="card-badge">EXCLUSIF</div>
                     <div class="play-icon">
-                        <i class="fas fa-play"></i>
+                        <i class="fas fa-images"></i>
                     </div>
                     <div class="card-overlay">
-                        <div style="color:#fff;font-size:12px;font-weight:600;">Aperçu gratuit</div>
+                        <div style="color:#fff;font-size:12px;font-weight:600;">Galerie photos</div>
                     </div>
                 </div>
                 <div class="card-info">
-                    <div class="card-title">Aperçu gratuit 🔥</div>
+                    <div class="card-title">Shooting privé 📸</div>
                     <div class="card-meta">
-                        <div class="card-price free-price">GRATUIT</div>
+                        <div class="card-price">9.99€</div>
                         <div class="card-stats">
-                            <span><i class="fas fa-eye"></i> <span class="live-stat" data-base="12500">12.5K</span></span>
-                            <span><i class="fas fa-heart"></i> <span class="live-stat" data-base="2300">2.3K</span></span>
+                            <span><i class="fas fa-eye"></i> <span class="live-stat" data-base="15200">15.2K</span></span>
+                            <span><i class="fas fa-heart"></i> <span class="live-stat" data-base="3100">3.1K</span></span>
                         </div>
                     </div>
                 </div>
@@ -1235,30 +1233,6 @@
             container.innerHTML = '';
             overlay.classList.remove('active');
             document.body.style.overflow = '';
-        }
-
-        // Preview video (no link, just plays the video in place)
-        function playPreview(card) {
-            const video = card.querySelector('video');
-            if (!video) return;
-
-            // Si la vidéo est déjà en lecture avec son, on met en pause
-            if (!video.muted && !video.paused) {
-                video.pause();
-                video.currentTime = 0;
-                video.muted = true;
-                video.play().catch(() => {});
-                return;
-            }
-
-            // Sinon on active le son et on relance
-            video.muted = false;
-            video.currentTime = 0;
-            video.play().catch(e => {
-                // Fallback : si autoplay avec son bloqué, on laisse muted
-                video.muted = true;
-                video.play().catch(() => {});
-            });
         }
 
         // Tab filtering

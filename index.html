@@ -1002,6 +1002,7 @@
         }
     </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
     <!-- Navbar -->
@@ -1036,7 +1037,7 @@
                     </div>
                     <div class="profile-stats">
                         <div class="profile-stat">
-                            <div class="profile-stat-number" id="statPosts">128</div>
+                            <div class="profile-stat-number" id="statPosts" style="visibility:hidden;">128</div>
                             <div class="profile-stat-label">Publications</div>
                         </div>
                         <div class="profile-stat">
@@ -1239,10 +1240,25 @@
         // Preview video (no link, just plays the video in place)
         function playPreview(card) {
             const video = card.querySelector('video');
-            if (video) {
-                video.muted = false;
-                video.play().catch(e => {});
+            if (!video) return;
+
+            // Si la vidéo est déjà en lecture avec son, on met en pause
+            if (!video.muted && !video.paused) {
+                video.pause();
+                video.currentTime = 0;
+                video.muted = true;
+                video.play().catch(() => {});
+                return;
             }
+
+            // Sinon on active le son et on relance
+            video.muted = false;
+            video.currentTime = 0;
+            video.play().catch(e => {
+                // Fallback : si autoplay avec son bloqué, on laisse muted
+                video.muted = true;
+                video.play().catch(() => {});
+            });
         }
 
         // Tab filtering

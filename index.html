@@ -1015,6 +1015,9 @@
         </div>
         <div class="nav-actions">
             <button class="btn btn-outline" onclick="openSignup()">Connexion</button>
+            <a href="https://unlockt.me/soumaya/chat" target="_blank" class="btn btn-primary" id="navMessageBtn" style="display:none;">
+                <i class="fas fa-envelope"></i> Messages
+            </a>
         </div>
     </nav>
 
@@ -1049,10 +1052,7 @@
                         </div>
                     </div>
                     <div class="profile-actions">
-                        <a href="https://buy.stripe.com/5kQ14m4dWfvY60b0keew80n" target="_blank" class="btn-subscribe">
-                            <i class="fas fa-crown"></i> S'abonner 9.99€/mois
-                        </a>
-                        <a href="https://unlockt.me/soumaya/chat" target="_blank" class="btn-message">
+                        <a href="https://unlockt.me/soumaya/chat" target="_blank" class="btn-message" id="profileMessageBtn" style="display:none;">
                             <i class="fas fa-envelope"></i> Message
                         </a>
                     </div>
@@ -1076,30 +1076,6 @@
     <!-- Content Grid -->
     <section class="content-section" id="contentGrid">
         <div class="content-grid">
-            <!-- Card 1 - Photo Gallery -->
-            <div class="content-card" data-category="photo" data-vip="false" onclick="openVideoPage('https://y2f5yf.me/v/9374998e94')">
-                <div class="card-media">
-                    <iframe src="https://y2f5yf.me/v/9374998e94" scrolling="no" frameborder="0"></iframe>
-                    <div class="card-badge">EXCLUSIF</div>
-                    <div class="play-icon">
-                        <i class="fas fa-images"></i>
-                    </div>
-                    <div class="card-overlay">
-                        <div style="color:#fff;font-size:12px;font-weight:600;">Galerie photos</div>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <div class="card-title">Shooting privé 📸</div>
-                    <div class="card-meta">
-                        <div class="card-price">9.99€</div>
-                        <div class="card-stats">
-                            <span><i class="fas fa-eye"></i> <span class="live-stat" data-base="15200">15.2K</span></span>
-                            <span><i class="fas fa-heart"></i> <span class="live-stat" data-base="3100">3.1K</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Card 2 - Vidéo Exclus 5,55€ -->
             <div class="content-card" data-category="video" data-vip="false" onclick="openVideoPage('https://bmh0oc.me/v/24c4651244')">
                 <div class="card-media">
@@ -1173,15 +1149,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Subscribe Banner -->
-    <section class="subscribe-banner">
-        <h2>🔓 Débloque tout le contenu</h2>
-        <p>Abonne-toi maintenant pour accéder à toutes les vidéos et photos exclusifs de Soumaya Fontaine.</p>
-        <a href="https://buy.stripe.com/5kQ14m4dWfvY60b0keew80n" target="_blank" class="btn btn-primary">
-            <i class="fas fa-crown"></i> S'abonner maintenant - 9.99€/mois
-        </a>
     </section>
 
     <!-- Footer -->
@@ -1384,6 +1351,38 @@
                 navbar.style.background = 'rgba(10, 10, 15, 0.95)';
             }
         });
+
+        // Stripe payment detection
+        function checkPaymentStatus() {
+            // Vérifier si l'utilisateur vient de Stripe (paramètre ?success=1 dans l'URL)
+            const urlParams = new URLSearchParams(window.location.search);
+            const fromStripe = urlParams.get('success') === '1' || urlParams.get('paid') === '1';
+
+            // Vérifier localStorage
+            const isPaid = localStorage.getItem('soumayaPaid') === 'true';
+
+            if (fromStripe || isPaid) {
+                if (fromStripe) {
+                    localStorage.setItem('soumayaPaid', 'true');
+                    // Nettoyer l'URL
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                }
+                showPaidUI();
+            }
+        }
+
+        function showPaidUI() {
+            // Afficher le bouton Message dans le profil
+            const msgBtn = document.getElementById('profileMessageBtn');
+            if (msgBtn) msgBtn.style.display = 'inline-flex';
+
+            // Afficher le bouton Messages dans la navbar
+            const navMsg = document.getElementById('navMessageBtn');
+            if (navMsg) navMsg.style.display = 'inline-flex';
+        }
+
+        // Vérifier au chargement
+        window.addEventListener('load', checkPaymentStatus);
 
         // Live stats animation - fake but alive
         function animateStats() {

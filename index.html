@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Exclus 🇲🇦🇩🇿🫦</title>
+    <title>Exclus.fans 🔞</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -1068,15 +1068,156 @@
         .profile-page {
             animation: fadeInUp 0.4s ease;
         }
+
+        /* Porte d'entrée - avertissement plateforme */
+        .age-gate-overlay {
+            position: fixed;
+            inset: 0;
+            background: #0a0a0f;
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .age-gate-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255, 107, 157, 0.14), transparent 70%);
+            pointer-events: none;
+        }
+
+        .age-gate-overlay.hidden {
+            display: none;
+        }
+
+        .age-gate-content {
+            position: relative;
+            max-width: 440px;
+            width: 100%;
+            background: #1a1a2e;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .age-gate-logo {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .age-gate-tag {
+            display: inline-block;
+            background: rgba(255, 107, 157, 0.12);
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            color: #ff6b9d;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .age-gate-content p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .age-gate-content p strong {
+            color: #fff;
+        }
+
+        .age-gate-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .age-gate-enter {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+
+        .age-gate-enter:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .age-gate-exit {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #888;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .age-gate-exit:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #aaa;
+        }
+
+        .age-gate-footnote {
+            margin-top: 18px;
+            font-size: 11px;
+            color: #555;
+            line-height: 1.5;
+        }
     </style>
 <base target="_blank">
 </head>
 <body>
+    <!-- Porte d'entrée plateforme -->
+    <div class="age-gate-overlay" id="ageGateOverlay">
+        <div class="age-gate-content">
+            <div class="age-gate-logo">Exclus.fans</div>
+            <div class="age-gate-tag">CONTENU RÉSERVÉ AUX ADULTES</div>
+            <p>
+                Ce site donne accès à du <strong>contenu pour adultes</strong> proposé par des créatrices indépendantes.
+                En continuant, tu confirmes avoir <strong>18 ans ou plus</strong> (ou l'âge légal de majorité dans ton pays)
+                et tu acceptes de visionner ce type de contenu de ton plein gré.
+            </p>
+            <div class="age-gate-actions">
+                <button class="age-gate-enter" onclick="enterExclusFans()">J'ai 18 ans ou plus — Entrer</button>
+                <a class="age-gate-exit" href="https://www.google.com">J'ai moins de 18 ans — Quitter</a>
+            </div>
+            <div class="age-gate-footnote">
+                Exclus.fans n'héberge pas directement le contenu payant : les échanges et paiements se font via des liens externes (Unlockt).
+            </div>
+        </div>
+    </div>
+
     <div class="profile-page" data-profile="soumaya" data-followers-base="45200" data-likes-base="892">
 
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo"> Exclus.fans</div>
+        <div class="logo">Exclus.fans</div>
         <div class="nav-links">
             <a href="#" class="active">Accueil</a>
             <a href="#">Explorer</a>
@@ -1104,8 +1245,7 @@
                     </div>
                     <div class="profile-handle">@soumaya.fontaine</div>
                     <div class="profile-bio">
-                      venez je mord pas 🫦🤭<br>
-                        
+                        Venez je ne mords pas ! 🫦
                     </div>
                     <div class="profile-stats">
                         <div class="profile-stat">
@@ -1227,7 +1367,7 @@
     <!-- Video Page Overlay (full screen) -->
     <div class="video-page-overlay">
         <div class="video-page-header">
-            <div class="logo">Soumaya Exclus</div>
+            <div class="logo">Exclus.fans</div>
             <button class="video-page-close" onclick="closeVideoPage(this)">
                 <i class="fas fa-times"></i>
             </button>
@@ -1282,7 +1422,7 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo"> Exclus.fans</div>
+        <div class="logo">Exclus.fans</div>
         <div class="nav-links">
             <a href="#" class="active">Accueil</a>
             <a href="#">Explorer</a>
@@ -1310,8 +1450,7 @@
                     </div>
                     <div class="profile-handle">@imendz</div>
                     <div class="profile-bio">
-                         je suis pieuse et folle aussi 🤲🏼🫣 <br>
-                        
+                        Je suis pieuse et un peu folle 🫣🤲🏼
                     </div>
                     <div class="profile-stats">
                         <div class="profile-stat">
@@ -1385,7 +1524,7 @@
     <!-- Video Page Overlay (full screen) -->
     <div class="video-page-overlay">
         <div class="video-page-header">
-            <div class="logo">imendz Exclus</div>
+            <div class="logo">Exclus.fans</div>
             <button class="video-page-close" onclick="closeVideoPage(this)">
                 <i class="fas fa-times"></i>
             </button>
@@ -1400,7 +1539,7 @@
             <button class="signup-close" onclick="closeSignup(this)">
                 <i class="fas fa-times"></i>
             </button>
-            <h2>Rejoins imendz Exclus</h2>
+            <h2>Rejoins Exclus.fans</h2>
             <p>Crée ton compte pour accéder au contenu exclusif</p>
             <form onsubmit="handleSignup(event, this)">
                 <div class="form-group">
@@ -1437,6 +1576,22 @@
     </div>
 
     <script>
+        // Porte d'entrée plateforme (Exclus.fans)
+        function enterExclusFans() {
+            sessionStorage.setItem('exclusFansAgeVerified', 'true');
+            document.getElementById('ageGateOverlay').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        (function initAgeGate() {
+            const alreadyVerified = sessionStorage.getItem('exclusFansAgeVerified') === 'true';
+            if (alreadyVerified) {
+                document.getElementById('ageGateOverlay').classList.add('hidden');
+            } else {
+                document.body.style.overflow = 'hidden';
+            }
+        })();
+
         // Bascule entre les pages profil
         function switchProfile(profile) {
             document.querySelectorAll('.profile-page').forEach(page => {

@@ -1147,7 +1147,7 @@
     <section class="content-section">
         <div class="content-grid">
             <!-- Card 2 - Vidéo Exclus 5,55€ -->
-            <div class="content-card" data-category="video" data-vip="false" onclick="openVideoPage(this, \'https://bmh0oc.me/v/24c4651244\')">
+            <div class="content-card" data-category="video" data-vip="false" onclick="openVideoPage(this, 'https://bmh0oc.me/v/24c4651244')">
                 <div class="card-media">
                     <iframe src="https://bmh0oc.me/v/24c4651244" scrolling="no" frameborder="0"></iframe>
                     <div class="card-badge">EXCLUSIF</div>
@@ -1171,7 +1171,7 @@
             </div>
 
             <!-- Card 3 - Photo Gallery (iframe preview + redirect) -->
-            <div class="content-card" data-category="photo" data-vip="false" onclick="openVideoPage(this, \'https://y2f5yf.me/v/9374998e94\')">
+            <div class="content-card" data-category="photo" data-vip="false" onclick="openVideoPage(this, 'https://y2f5yf.me/v/9374998e94')">
                 <div class="card-media">
                     <iframe src="https://y2f5yf.me/v/9374998e94" scrolling="no" frameborder="0"></iframe>
                     <div class="card-badge">EXCLUSIF</div>
@@ -1194,23 +1194,21 @@
                 </div>
             </div>
 
-            <!-- Card 3 - VIP (iframe preview + redirect) -->
-            <div class="content-card" data-category="vip" data-vip="true" onclick="openVideoPage(this, \'https://y2f5yf.me/v/7e71e270f7\')">
+            <!-- Card 3 - contenu libre, sans verrouillage ni paiement -->
+            <div class="content-card" data-category="video" data-vip="false" onclick="openVideoPage(this, 'https://y2f5yf.me/v/7e71e270f7')">
                 <div class="card-media">
                     <iframe src="https://y2f5yf.me/v/7e71e270f7" scrolling="no" frameborder="0"></iframe>
-                    <div class="card-badge" style="background:linear-gradient(135deg,#ffd700,#ff8c00);">VIP</div>
-                    <div class="locked-overlay">
-                        <i class="fas fa-crown" style="color:#ffd700;"></i>
-                        <span>Contenu VIP</span>
-                        <a href="https://buy.stripe.com/5kQ14m4dWfvY60b0keew80n" target="_blank" class="unlock-btn" style="background:linear-gradient(135deg,#ffd700,#ff8c00);" onclick="event.stopPropagation()">
-                            <i class="fas fa-crown"></i> Devenir VIP
-                        </a>
+                    <div class="card-badge">EXCLUSIF</div>
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="card-overlay">
+                        <div style="color:#fff;font-size:12px;font-weight:600;">Vidéo exclusive</div>
                     </div>
                 </div>
                 <div class="card-info">
-                    <div class="card-title">Contenu VIP 👑</div>
+                    <div class="card-title">Contenu exclusif 🔥</div>
                     <div class="card-meta">
-                        <div class="card-price" style="color:#ffd700;">29.99€</div>
                         <div class="card-stats">
                             <span><i class="fas fa-eye"></i> <span class="live-stat" data-base="3800">3.8K</span></span>
                             <span><i class="fas fa-heart"></i> <span class="live-stat" data-base="750">750</span></span>
@@ -1301,10 +1299,10 @@
 
     <!-- Profile Hero -->
     <section class="profile-hero">
-        <div class="profile-banner profile-banner-el" style="background-image: url('imendz.JPG'); background-size: cover; background-position: center;"></div>
+        <div class="profile-banner profile-banner-el" style="background-image: url('imendz.jpeg'); background-size: cover; background-position: center;"></div>
         <div class="profile-container">
             <div class="profile-header">
-                <div class="profile-avatar profile-avatar-el" style="background-image: url('imendz.JPG'); background-size: cover; background-position: center;"></div>
+                <div class="profile-avatar profile-avatar-el" style="background-image: url('imendz.jpeg'); background-size: cover; background-position: center;"></div>
                 <div class="profile-info">
                     <div class="profile-name">
                         imendz <span class="flag">🇩🇿</span> <span class="lips">🫦</span>
@@ -1354,25 +1352,21 @@
     <!-- Content Grid -->
     <section class="content-section">
         <div class="content-grid">
-            <!-- Card - Unlockt (verrouillée, comme la carte VIP du template) -->
-            <div class="content-card" data-category="vip" data-vip="true" onclick="openVideoPage(this, \'https://bmh0oc.me/v/ab2bdcbad7\')">
+            <!-- Card - contenu libre, sans verrouillage ni paiement -->
+            <div class="content-card" data-category="video" data-vip="false" onclick="openVideoPage(this, 'https://bmh0oc.me/v/ab2bdcbad7')">
                 <div class="card-media">
                     <iframe src="https://bmh0oc.me/v/ab2bdcbad7" scrolling="no" frameborder="0"></iframe>
-                    <div class="card-badge" style="background:linear-gradient(135deg,#ffd700,#ff8c00);">VIP</div>
-                    <div class="locked-overlay">
-                        <i class="fas fa-crown" style="color:#ffd700;"></i>
-                        <span>Contenu verrouillé</span>
-                        <!-- ⚠️ Remplacer par le vrai lien Stripe d'imendz avant mise en ligne -->
-                        <a href="https://buy.stripe.com/REMPLACER_LIEN_IMENDZ" target="_blank" class="unlock-btn" style="background:linear-gradient(135deg,#ffd700,#ff8c00);" onclick="event.stopPropagation()">
-                            <i class="fas fa-crown"></i> Déverrouiller
-                        </a>
+                    <div class="card-badge">EXCLUSIF</div>
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="card-overlay">
+                        <div style="color:#fff;font-size:12px;font-weight:600;">Vidéo exclusive</div>
                     </div>
                 </div>
                 <div class="card-info">
-                    <div class="card-title">Contenu exclusif 🔒</div>
+                    <div class="card-title">Contenu exclusif 🔥</div>
                     <div class="card-meta">
-                        <!-- ⚠️ Prix à confirmer avec le client -->
-                        <div class="card-price" style="color:#ffd700;">19.99€</div>
                         <div class="card-stats">
                             <span><i class="fas fa-eye"></i> <span class="live-stat" data-base="4200">4.2K</span></span>
                             <span><i class="fas fa-heart"></i> <span class="live-stat" data-base="890">890</span></span>

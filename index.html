@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Soumaya Exclus 🇲🇦🫦</title>
+    <title>Exclus 🇲🇦🇩🇿🫦</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -20,6 +20,24 @@
             overflow-x: hidden;
             width: 100%;
             min-height: 100vh;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        .content-card:focus-visible,
+        .tab:focus-visible {
+            outline: 2px solid #ff6b9d;
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* Navbar */
@@ -111,6 +129,7 @@
             background: linear-gradient(135deg, #ff6b9d, #c44569);
             color: #fff;
             box-shadow: 0 4px 20px rgba(255, 107, 157, 0.3);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
         }
 
         .btn-primary:hover {
@@ -137,13 +156,21 @@
             background-position: center;
         }
 
+        .profile-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 100% at 50% 0%, rgba(255, 107, 157, 0.12), transparent 70%);
+            pointer-events: none;
+        }
+
         .profile-banner::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 70px;
             background: linear-gradient(to top, #0a0a0f, transparent);
         }
 
@@ -176,11 +203,12 @@
             font-size: 50px;
             font-weight: 800;
             color: #fff;
-            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
             flex-shrink: 0;
             overflow: hidden;
             background-size: cover;
             background-position: center;
+            transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .profile-info {
@@ -368,7 +396,7 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 14px;
             overflow: hidden;
-            transition: all 0.3s;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
             cursor: pointer;
             position: relative;
             width: 100%;
@@ -378,6 +406,10 @@
             transform: translateY(-4px);
             border-color: rgba(255, 107, 157, 0.3);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .content-card:active {
+            transform: translateY(-1px) scale(0.99);
         }
 
         .content-card.hidden {
@@ -390,6 +422,21 @@
             aspect-ratio: 3 / 4;
             overflow: hidden;
             background: linear-gradient(135deg, #1a0a1a, #2d1b36);
+        }
+
+        .card-media::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0) 70%);
+            background-size: 200% 100%;
+            animation: shimmer 2.2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 150% 0; }
+            100% { background-position: -50% 0; }
         }
 
         .card-media iframe {
@@ -519,6 +566,11 @@
             font-size: 11px;
         }
 
+        .live-stat {
+            display: inline-block;
+            transition: opacity 0.25s ease;
+        }
+
         /* Locked overlay */
         .locked-overlay {
             position: absolute;
@@ -539,6 +591,12 @@
         .locked-overlay i {
             font-size: 32px;
             color: #ff6b9d;
+            animation: pulseGlow 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 0 rgba(255, 107, 157, 0)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.6)); transform: scale(1.08); }
         }
 
         .locked-overlay span {
@@ -864,6 +922,12 @@
                 display: none;
             }
 
+            .nav-actions .nav-switch {
+                display: inline-flex;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
             .profile-container {
                 padding: 0 16px;
             }
@@ -1000,11 +1064,16 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #ff6b9d;
         }
+    
+        .profile-page {
+            animation: fadeInUp 0.4s ease;
+        }
     </style>
-<base target="_blank">
 <base target="_blank">
 </head>
 <body>
+    <div class="profile-page" data-profile="soumaya" data-followers-base="45200" data-likes-base="892">
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">Soumaya Exclus</div>
@@ -1014,8 +1083,9 @@
             <a href="#">Messages</a>
         </div>
         <div class="nav-actions">
-            <button class="btn btn-outline" onclick="openSignup()">Connexion</button>
-            <a href="https://unlockt.me/soumaya/chat" target="_blank" class="btn btn-primary" id="navMessageBtn" style="display:none;">
+            <button class="btn btn-outline nav-switch" onclick="switchProfile('imendz')">🇩🇿 imendz</button>
+            <button class="btn btn-outline" onclick="openSignup(this)">Connexion</button>
+            <a href="https://unlockt.me/soumaya/chat" target="_blank" class="btn btn-primary nav-message-btn" style="display:none;">
                 <i class="fas fa-envelope"></i> Messages
             </a>
         </div>
@@ -1023,10 +1093,10 @@
 
     <!-- Profile Hero -->
     <section class="profile-hero">
-        <div class="profile-banner" id="profileBanner" style="background-image: url('IMG_8245.jpeg'); background-size: cover; background-position: center;"></div>
+        <div class="profile-banner profile-banner-el" style="background-image: url('IMG_8245.jpeg'); background-size: cover; background-position: center;"></div>
         <div class="profile-container">
             <div class="profile-header">
-                <div class="profile-avatar" id="profileAvatar" style="background-image: url('IMG_8245.jpeg'); background-size: cover; background-position: center;"></div>
+                <div class="profile-avatar profile-avatar-el" style="background-image: url('IMG_8245.jpeg'); background-size: cover; background-position: center;"></div>
                 <div class="profile-info">
                     <div class="profile-name">
                         Soumaya Fontaine <span class="flag">🇲🇦</span> <span class="lips">🫦</span>
@@ -1039,20 +1109,20 @@
                     </div>
                     <div class="profile-stats">
                         <div class="profile-stat">
-                            <div class="profile-stat-number" id="statPosts" style="visibility:hidden;">128</div>
+                            <div class="profile-stat-number stat-posts-el">3</div>
                             <div class="profile-stat-label">Publications</div>
                         </div>
                         <div class="profile-stat">
-                            <div class="profile-stat-number" id="statFollowers">45.2K</div>
+                            <div class="profile-stat-number stat-followers-el">45.2K</div>
                             <div class="profile-stat-label">Abonnés</div>
                         </div>
                         <div class="profile-stat">
-                            <div class="profile-stat-number" id="statLikes">892</div>
+                            <div class="profile-stat-number stat-likes-el">892</div>
                             <div class="profile-stat-label">J'aime</div>
                         </div>
                     </div>
                     <div class="profile-actions">
-                        <a href="https://unlockt.me/soumaya/chat" target="_blank" class="btn-message" id="profileMessageBtn" style="display:none;">
+                        <a href="https://unlockt.me/soumaya/chat" target="_blank" class="btn-message profile-message-btn" style="display:none;">
                             <i class="fas fa-envelope"></i> Message
                         </a>
                     </div>
@@ -1064,20 +1134,20 @@
     <!-- Tabs -->
     <section class="tabs-section">
         <div class="tabs">
-            <button class="tab active" onclick="switchTab(this, 'all')">Tout</button>
-            <button class="tab" onclick="switchTab(this, 'videos')">Vidéos</button>
-            <button class="tab" onclick="switchTab(this, 'photos')">Photos</button>
-            <button class="tab" onclick="switchTab(this, 'locked')">
+            <button class="tab active" onclick=\"switchTab(this, 'all')\">Tout</button>
+            <button class="tab" onclick=\"switchTab(this, 'videos')\">Vidéos</button>
+            <button class="tab" onclick=\"switchTab(this, 'photos')\">Photos</button>
+            <button class="tab" onclick=\"switchTab(this, 'locked')\">
                 <i class="fas fa-lock" style="margin-right:5px;"></i>Exclusif
             </button>
         </div>
     </section>
 
     <!-- Content Grid -->
-    <section class="content-section" id="contentGrid">
+    <section class="content-section">
         <div class="content-grid">
             <!-- Card 2 - Vidéo Exclus 5,55€ -->
-            <div class="content-card" data-category="video" data-vip="false" onclick="openVideoPage('https://bmh0oc.me/v/24c4651244')">
+            <div class="content-card" data-category="video" data-vip="false" onclick="openVideoPage(this, \'https://bmh0oc.me/v/24c4651244\')">
                 <div class="card-media">
                     <iframe src="https://bmh0oc.me/v/24c4651244" scrolling="no" frameborder="0"></iframe>
                     <div class="card-badge">EXCLUSIF</div>
@@ -1101,7 +1171,7 @@
             </div>
 
             <!-- Card 3 - Photo Gallery (iframe preview + redirect) -->
-            <div class="content-card" data-category="photo" data-vip="false" onclick="openVideoPage('https://y2f5yf.me/v/9374998e94')">
+            <div class="content-card" data-category="photo" data-vip="false" onclick="openVideoPage(this, \'https://y2f5yf.me/v/9374998e94\')">
                 <div class="card-media">
                     <iframe src="https://y2f5yf.me/v/9374998e94" scrolling="no" frameborder="0"></iframe>
                     <div class="card-badge">EXCLUSIF</div>
@@ -1125,7 +1195,7 @@
             </div>
 
             <!-- Card 3 - VIP (iframe preview + redirect) -->
-            <div class="content-card" data-category="vip" data-vip="true" onclick="openVideoPage('https://y2f5yf.me/v/7e71e270f7')">
+            <div class="content-card" data-category="vip" data-vip="true" onclick="openVideoPage(this, \'https://y2f5yf.me/v/7e71e270f7\')">
                 <div class="card-media">
                     <iframe src="https://y2f5yf.me/v/7e71e270f7" scrolling="no" frameborder="0"></iframe>
                     <div class="card-badge" style="background:linear-gradient(135deg,#ffd700,#ff8c00);">VIP</div>
@@ -1157,80 +1227,260 @@
     </footer>
 
     <!-- Video Page Overlay (full screen) -->
-    <div class="video-page-overlay" id="videoPageOverlay">
+    <div class="video-page-overlay">
         <div class="video-page-header">
             <div class="logo">Soumaya Exclus</div>
-            <button class="video-page-close" onclick="closeVideoPage()">
+            <button class="video-page-close" onclick="closeVideoPage(this)">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="video-page-container" id="videoPageContainer">
+        <div class="video-page-container">
         </div>
     </div>
 
     <!-- Signup Modal -->
-    <div class="signup-overlay" id="signupOverlay">
+    <div class="signup-overlay">
         <div class="signup-content">
-            <button class="signup-close" onclick="closeSignup()">
+            <button class="signup-close" onclick="closeSignup(this)">
                 <i class="fas fa-times"></i>
             </button>
             <h2>Rejoins Soumaya Exclus</h2>
             <p>Crée ton compte pour accéder au contenu exclusif</p>
-            <form id="signupForm" onsubmit="handleSignup(event)">
+            <form onsubmit="handleSignup(event, this)">
                 <div class="form-group">
                     <label>Pseudo</label>
-                    <input type="text" placeholder="Ton pseudo" required id="signupPseudo">
+                    <input type="text" placeholder="Ton pseudo" required>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" placeholder="ton@email.com" required id="signupEmail">
+                    <input type="email" placeholder="ton@email.com" required>
                 </div>
                 <div class="form-group">
                     <label>Mot de passe</label>
-                    <input type="password" placeholder="••••••••" required id="signupPassword">
+                    <input type="password" placeholder="••••••••" required>
                 </div>
                 <div class="form-group">
                     <label>Confirmer le mot de passe</label>
-                    <input type="password" placeholder="••••••••" required id="signupConfirm">
+                    <input type="password" placeholder="••••••••" required>
                 </div>
                 <button type="submit" class="btn-signup">
                     <i class="fas fa-user-plus"></i> Créer mon compte
                 </button>
             </form>
             <div class="signup-divider">ou</div>
-            <button class="btn btn-outline" style="width:100%;" onclick="closeSignup()">
+            <button class="btn btn-outline" style="width:100%;" onclick="closeSignup(this)">
                 <i class="fab fa-google"></i> Continuer avec Google
             </button>
             <div class="signup-footer">
-                Déjà un compte ? <a href="#" onclick="closeSignup()">Se connecter</a>
+                Déjà un compte ? <a href="#" onclick="closeSignup(this)">Se connecter</a>
             </div>
         </div>
     </div>
 
+
+    </div>
+
+    <div class="profile-page" data-profile="imendz" data-followers-base="22800" data-likes-base="540" hidden>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">imendz Exclus</div>
+        <div class="nav-links">
+            <a href="#" class="active">Accueil</a>
+            <a href="#">Explorer</a>
+            <a href="#">Messages</a>
+        </div>
+        <div class="nav-actions">
+            <button class="btn btn-outline nav-switch" onclick="switchProfile('soumaya')">🇲🇦 Soumaya</button>
+            <button class="btn btn-outline" onclick="openSignup(this)">Connexion</button>
+            <a href="https://unlockt.me/imendz/chat" target="_blank" class="btn btn-primary nav-message-btn" style="display:none;">
+                <i class="fas fa-envelope"></i> Messages
+            </a>
+        </div>
+    </nav>
+
+    <!-- Profile Hero -->
+    <section class="profile-hero">
+        <div class="profile-banner profile-banner-el" style="background-image: url('imendz.jpeg'); background-size: cover; background-position: center;"></div>
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-avatar profile-avatar-el" style="background-image: url('imendz.jpeg'); background-size: cover; background-position: center;"></div>
+                <div class="profile-info">
+                    <div class="profile-name">
+                        imendz <span class="flag">🇩🇿</span> <span class="lips">🫦</span>
+                        <i class="fas fa-check-circle" style="color:#00d4ff;font-size:20px;"></i>
+                    </div>
+                    <div class="profile-handle">@imendz</div>
+                    <div class="profile-bio">
+                        Contenu exclusif réservé à mes abonnés 🔥<br>
+                        Rejoins-moi pour découvrir mon univers privé 💋
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="profile-stat-number stat-posts-el">1</div>
+                            <div class="profile-stat-label">Publications</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="profile-stat-number stat-followers-el">22.8K</div>
+                            <div class="profile-stat-label">Abonnés</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="profile-stat-number stat-likes-el">540</div>
+                            <div class="profile-stat-label">J'aime</div>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <a href="https://unlockt.me/imendz/chat" target="_blank" class="btn-message profile-message-btn" style="display:none;">
+                            <i class="fas fa-envelope"></i> Message
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="tabs-section">
+        <div class="tabs">
+            <button class="tab active" onclick=\"switchTab(this, 'all')\">Tout</button>
+            <button class="tab" onclick=\"switchTab(this, 'videos')\">Vidéos</button>
+            <button class="tab" onclick=\"switchTab(this, 'photos')\">Photos</button>
+            <button class="tab" onclick=\"switchTab(this, 'locked')\">
+                <i class="fas fa-lock" style="margin-right:5px;"></i>Exclusif
+            </button>
+        </div>
+    </section>
+
+    <!-- Content Grid -->
+    <section class="content-section">
+        <div class="content-grid">
+            <!-- Card - Unlockt (verrouillée, comme la carte VIP du template) -->
+            <div class="content-card" data-category="vip" data-vip="true" onclick="openVideoPage(this, \'https://bmh0oc.me/v/ab2bdcbad7\')">
+                <div class="card-media">
+                    <iframe src="https://bmh0oc.me/v/ab2bdcbad7" scrolling="no" frameborder="0"></iframe>
+                    <div class="card-badge" style="background:linear-gradient(135deg,#ffd700,#ff8c00);">VIP</div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-crown" style="color:#ffd700;"></i>
+                        <span>Contenu verrouillé</span>
+                        <!-- ⚠️ Remplacer par le vrai lien Stripe d'imendz avant mise en ligne -->
+                        <a href="https://buy.stripe.com/REMPLACER_LIEN_IMENDZ" target="_blank" class="unlock-btn" style="background:linear-gradient(135deg,#ffd700,#ff8c00);" onclick="event.stopPropagation()">
+                            <i class="fas fa-crown"></i> Déverrouiller
+                        </a>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="card-title">Contenu exclusif 🔒</div>
+                    <div class="card-meta">
+                        <!-- ⚠️ Prix à confirmer avec le client -->
+                        <div class="card-price" style="color:#ffd700;">19.99€</div>
+                        <div class="card-stats">
+                            <span><i class="fas fa-eye"></i> <span class="live-stat" data-base="4200">4.2K</span></span>
+                            <span><i class="fas fa-heart"></i> <span class="live-stat" data-base="890">890</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p> 2026 imendz Exclus - imendz 🇩🇿🫦. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Video Page Overlay (full screen) -->
+    <div class="video-page-overlay">
+        <div class="video-page-header">
+            <div class="logo">imendz Exclus</div>
+            <button class="video-page-close" onclick="closeVideoPage(this)">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="video-page-container">
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="signup-overlay">
+        <div class="signup-content">
+            <button class="signup-close" onclick="closeSignup(this)">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Rejoins imendz Exclus</h2>
+            <p>Crée ton compte pour accéder au contenu exclusif</p>
+            <form onsubmit="handleSignup(event, this)">
+                <div class="form-group">
+                    <label>Pseudo</label>
+                    <input type="text" placeholder="Ton pseudo" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="ton@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirmer le mot de passe</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-signup">
+                    <i class="fas fa-user-plus"></i> Créer mon compte
+                </button>
+            </form>
+            <div class="signup-divider">ou</div>
+            <button class="btn btn-outline" style="width:100%;" onclick="closeSignup(this)">
+                <i class="fab fa-google"></i> Continuer avec Google
+            </button>
+            <div class="signup-footer">
+                Déjà un compte ? <a href="#" onclick="closeSignup(this)">Se connecter</a>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
     <script>
-        // Video Page (full screen iframe)
-        function openVideoPage(url) {
-            const overlay = document.getElementById('videoPageOverlay');
-            const container = document.getElementById('videoPageContainer');
+        // Bascule entre les pages profil
+        function switchProfile(profile) {
+            document.querySelectorAll('.profile-page').forEach(page => {
+                if (page.getAttribute('data-profile') === profile) {
+                    page.removeAttribute('hidden');
+                } else {
+                    page.setAttribute('hidden', '');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+
+        // Video Page (full screen iframe) - scopé à la page profil courante
+        function openVideoPage(triggerEl, url) {
+            const page = triggerEl.closest('.profile-page');
+            const overlay = page.querySelector('.video-page-overlay');
+            const container = overlay.querySelector('.video-page-container');
             container.innerHTML = `<iframe src="${url}" allowfullscreen allow="autoplay; fullscreen"></iframe>`;
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeVideoPage() {
-            const overlay = document.getElementById('videoPageOverlay');
-            const container = document.getElementById('videoPageContainer');
+        function closeVideoPage(triggerEl) {
+            const page = triggerEl.closest('.profile-page');
+            const overlay = page.querySelector('.video-page-overlay');
+            const container = overlay.querySelector('.video-page-container');
             container.innerHTML = '';
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // Tab filtering
+        // Tab filtering - scopé à la page profil courante
         function switchTab(tab, category) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            const page = tab.closest('.profile-page');
+            page.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
 
-            const cards = document.querySelectorAll('.content-card');
+            const cards = page.querySelectorAll('.content-card');
 
             cards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
@@ -1260,25 +1510,31 @@
             });
         }
 
-        // Signup Modal
-        function openSignup() {
-            const overlay = document.getElementById('signupOverlay');
+        // Signup Modal - scopé à la page profil courante
+        function openSignup(triggerEl) {
+            const page = triggerEl.closest('.profile-page');
+            const overlay = page.querySelector('.signup-overlay');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeSignup() {
-            const overlay = document.getElementById('signupOverlay');
+        function closeSignup(triggerEl) {
+            const page = triggerEl.closest('.profile-page');
+            const overlay = page.querySelector('.signup-overlay');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        function handleSignup(e) {
+        function handleSignup(e, formEl) {
             e.preventDefault();
-            const pseudo = document.getElementById('signupPseudo').value;
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const confirm = document.getElementById('signupConfirm').value;
+            const page = formEl.closest('.profile-page');
+            const profile = page.getAttribute('data-profile');
+
+            const pseudo = page.querySelector('.signup-content input[type="text"]').value;
+            const email = page.querySelector('.signup-content input[type="email"]').value;
+            const passwordInputs = page.querySelectorAll('.signup-content input[type="password"]');
+            const password = passwordInputs[0].value;
+            const confirm = passwordInputs[1].value;
 
             if (password !== confirm) {
                 alert('Les mots de passe ne correspondent pas !');
@@ -1296,118 +1552,140 @@
                 registeredAt: new Date().toISOString(),
                 isLoggedIn: true
             };
-            localStorage.setItem('soumayaUser', JSON.stringify(user));
+            localStorage.setItem(profile + 'User', JSON.stringify(user));
 
             alert('Bienvenue ' + pseudo + ' ! Ton compte a été créé avec succès.');
-            closeSignup();
-            updateNavForLoggedInUser(pseudo);
+            closeSignup(formEl);
+            updateNavForLoggedInUser(page, pseudo);
         }
 
-        function updateNavForLoggedInUser(pseudo) {
-            const navActions = document.querySelector('.nav-actions');
-            navActions.innerHTML = `
-                <span style="color:#ff6b9d;font-weight:600;font-size:14px;"><i class="fas fa-user" style="margin-right:6px;"></i>${pseudo}</span>
-                <button class="btn btn-outline" onclick="logout()">Déconnexion</button>
-            `;
+        function updateNavForLoggedInUser(page, pseudo) {
+            const navActions = page.querySelector('.nav-actions');
+            // On garde le bouton de bascule entre profils, on remplace le reste
+            const switchBtn = navActions.querySelector('.nav-switch');
+            navActions.innerHTML = '';
+            if (switchBtn) navActions.appendChild(switchBtn);
+
+            const userLabel = document.createElement('span');
+            userLabel.style.cssText = 'color:#ff6b9d;font-weight:600;font-size:14px;';
+            userLabel.innerHTML = `<i class="fas fa-user" style="margin-right:6px;"></i>${pseudo}`;
+
+            const logoutBtn = document.createElement('button');
+            logoutBtn.className = 'btn btn-outline';
+            logoutBtn.textContent = 'Déconnexion';
+            logoutBtn.onclick = () => logout(page);
+
+            navActions.appendChild(userLabel);
+            navActions.appendChild(logoutBtn);
         }
 
-        function logout() {
-            localStorage.removeItem('soumayaUser');
+        function logout(page) {
+            const profile = page.getAttribute('data-profile');
+            localStorage.removeItem(profile + 'User');
             location.reload();
         }
 
-        // Check if user is already logged in
+        // Vérifie si un compte est déjà connecté, pour chaque page profil
         window.addEventListener('load', function() {
-            const savedUser = localStorage.getItem('soumayaUser');
-            if (savedUser) {
-                const user = JSON.parse(savedUser);
-                if (user.isLoggedIn) {
-                    updateNavForLoggedInUser(user.pseudo);
+            document.querySelectorAll('.profile-page').forEach(page => {
+                const profile = page.getAttribute('data-profile');
+                const savedUser = localStorage.getItem(profile + 'User');
+                if (savedUser) {
+                    const user = JSON.parse(savedUser);
+                    if (user.isLoggedIn) {
+                        updateNavForLoggedInUser(page, user.pseudo);
+                    }
                 }
-            }
+            });
         });
 
-        // Close signup on overlay click
-        document.getElementById('signupOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeSignup();
-            }
+        // Fermer le signup en cliquant hors de la fenêtre
+        document.querySelectorAll('.signup-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
         });
 
-        // Close video page on Escape
+        // Fermer avec Echap
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                closeVideoPage();
-                closeSignup();
+                document.querySelectorAll('.video-page-overlay.active').forEach(o => {
+                    o.querySelector('.video-page-container').innerHTML = '';
+                    o.classList.remove('active');
+                });
+                document.querySelectorAll('.signup-overlay.active').forEach(o => o.classList.remove('active'));
+                document.body.style.overflow = '';
             }
         });
 
-        // Navbar scroll effect
+        // Effet navbar au scroll (les deux pages en même temps, discret)
         window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(10, 10, 15, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(10, 10, 15, 0.95)';
-            }
+            const opacity = window.scrollY > 50 ? '0.98' : '0.95';
+            document.querySelectorAll('.navbar').forEach(navbar => {
+                navbar.style.background = `rgba(10, 10, 15, ${opacity})`;
+            });
         });
 
-        // Stripe payment detection
+        // Détection retour Stripe : ajoute ?success=1&profile=imendz (ou soumaya)
+        // à l'URL de succès configurée dans Stripe pour indiquer quel profil déverrouiller.
         function checkPaymentStatus() {
-            // Vérifier si l'utilisateur vient de Stripe (paramètre ?success=1 dans l'URL)
             const urlParams = new URLSearchParams(window.location.search);
             const fromStripe = urlParams.get('success') === '1' || urlParams.get('paid') === '1';
+            const targetProfile = urlParams.get('profile') || 'soumaya';
 
-            // Vérifier localStorage
-            const isPaid = localStorage.getItem('soumayaPaid') === 'true';
-
-            if (fromStripe || isPaid) {
-                if (fromStripe) {
-                    localStorage.setItem('soumayaPaid', 'true');
-                    // Nettoyer l'URL
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                }
-                showPaidUI();
+            if (fromStripe) {
+                localStorage.setItem(targetProfile + 'Paid', 'true');
+                switchProfile(targetProfile);
+                window.history.replaceState({}, document.title, window.location.pathname);
             }
+
+            document.querySelectorAll('.profile-page').forEach(page => {
+                const profile = page.getAttribute('data-profile');
+                if (localStorage.getItem(profile + 'Paid') === 'true') {
+                    showPaidUI(page);
+                }
+            });
         }
 
-        function showPaidUI() {
-            // Afficher le bouton Message dans le profil
-            const msgBtn = document.getElementById('profileMessageBtn');
+        function showPaidUI(page) {
+            const msgBtn = page.querySelector('.profile-message-btn');
             if (msgBtn) msgBtn.style.display = 'inline-flex';
 
-            // Afficher le bouton Messages dans la navbar
-            const navMsg = document.getElementById('navMessageBtn');
+            const navMsg = page.querySelector('.nav-message-btn');
             if (navMsg) navMsg.style.display = 'inline-flex';
         }
 
-        // Vérifier au chargement
         window.addEventListener('load', checkPaymentStatus);
 
-        // Live stats animation - fake but alive
+        // Stats live - scopées par page profil (fake but alive)
         function animateStats() {
-            const liveStats = document.querySelectorAll('.live-stat');
-            liveStats.forEach(stat => {
+            document.querySelectorAll('.live-stat').forEach(stat => {
                 const base = parseInt(stat.getAttribute('data-base'));
                 const variation = Math.floor(Math.random() * 20) - 10;
                 const newValue = base + variation;
 
-                if (newValue >= 1000) {
-                    stat.textContent = (newValue / 1000).toFixed(1) + 'K';
-                } else {
-                    stat.textContent = newValue;
-                }
+                stat.style.opacity = '0.3';
+                setTimeout(() => { stat.style.opacity = '1'; }, 150);
+
+                stat.textContent = newValue >= 1000 ? (newValue / 1000).toFixed(1) + 'K' : newValue;
             });
 
-            const followersBase = 45200;
-            const followersVariation = Math.floor(Math.random() * 50) - 25;
-            const newFollowers = followersBase + followersVariation;
-            document.getElementById('statFollowers').textContent = (newFollowers / 1000).toFixed(1) + 'K';
+            document.querySelectorAll('.profile-page').forEach(page => {
+                const followersBase = parseInt(page.getAttribute('data-followers-base'));
+                const followersVariation = Math.floor(Math.random() * 50) - 25;
+                const newFollowers = followersBase + followersVariation;
+                const followersEl = page.querySelector('.stat-followers-el');
+                if (followersEl) followersEl.textContent = (newFollowers / 1000).toFixed(1) + 'K';
 
-            const likesBase = 892;
-            const likesVariation = Math.floor(Math.random() * 10) - 5;
-            const newLikes = likesBase + likesVariation;
-            document.getElementById('statLikes').textContent = newLikes;
+                const likesBase = parseInt(page.getAttribute('data-likes-base'));
+                const likesVariation = Math.floor(Math.random() * 10) - 5;
+                const newLikes = likesBase + likesVariation;
+                const likesEl = page.querySelector('.stat-likes-el');
+                if (likesEl) likesEl.textContent = newLikes;
+            });
         }
 
         function scheduleNextAnimation() {
@@ -1420,5 +1698,6 @@
 
         scheduleNextAnimation();
     </script>
+
 </body>
 </html>

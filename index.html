@@ -172,19 +172,6 @@
 <base target="_blank">
 </head>
 <body>
-    <div class="age-gate-overlay" id="ageGateOverlay">
-        <div class="age-gate-content">
-            <div class="age-gate-logo">Exclus.fans</div>
-            <div class="age-gate-tag">CONTENU RESERVE AUX ADULTES</div>
-            <p>Ce site donne acces a du <strong>contenu pour adultes</strong> propose par des creatrices independantes. En continuant, tu confirmes avoir <strong>18 ans ou plus</strong> (ou l'age legal de majorite dans ton pays) et tu acceptes de visionner ce type de contenu de ton plein gre.</p>
-            <div class="age-gate-actions">
-                <button class="age-gate-enter" onclick="enterExclusFans()">J'ai 18 ans ou plus — Entrer</button>
-                <a class="age-gate-exit" href="https://www.google.com">J'ai moins de 18 ans — Quitter</a>
-            </div>
-
-        </div>
-    </div>
-
     <div class="profile-page" data-profile="soumaya" data-followers-base="45200" data-likes-base="892">
     <nav class="navbar">
         <div class="logo">Exclus.fans</div>
@@ -366,19 +353,6 @@
     </div>
 
     <script>
-        function enterExclusFans() {
-            sessionStorage.setItem('exclusFansAgeVerified', 'true');
-            document.getElementById('ageGateOverlay').classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-        (function initAgeGate() {
-            const alreadyVerified = sessionStorage.getItem('exclusFansAgeVerified') === 'true';
-            if (alreadyVerified) {
-                document.getElementById('ageGateOverlay').classList.add('hidden');
-            } else {
-                document.body.style.overflow = 'hidden';
-            }
-        })();
         function switchProfile(profile) {
             document.querySelectorAll('.profile-page').forEach(page => {
                 if (page.getAttribute('data-profile') === profile) { page.removeAttribute('hidden'); }

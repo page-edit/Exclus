@@ -62,7 +62,8 @@
         .card-media iframe { width: 100%; height: 100%; border: none; display: block; pointer-events: none; }
         .card-media video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
         .content-card:hover .card-media video { transform: scale(1.05); }
-        .card-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; pointer-events: none; }
+        .content-card:hover .card-media { background-size: 112% !important; }
+        .card-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 45%, transparent 70%); display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; pointer-events: none; z-index: 2; }
         .card-badge { position: absolute; top: 10px; right: 10px; background: linear-gradient(135deg, #ff6b9d, #c44569); color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 700; z-index: 5; }
         .card-badge.locked { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); }
         .card-badge.free { background: linear-gradient(135deg, #00ff88, #00cc66); }
@@ -166,10 +167,8 @@
         .age-gate-enter:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(255, 107, 157, 0.4); }
         .age-gate-exit { width: 100%; padding: 12px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.12); color: #888; border-radius: 12px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; }
         .age-gate-exit:hover { border-color: rgba(255, 255, 255, 0.3); color: #aaa; }
-        
+
     </style>
-<base target="_blank">
-<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -182,7 +181,7 @@
                 <button class="age-gate-enter" onclick="enterExclusFans()">J'ai 18 ans ou plus — Entrer</button>
                 <a class="age-gate-exit" href="https://www.google.com">J'ai moins de 18 ans — Quitter</a>
             </div>
-            
+
         </div>
     </div>
 
@@ -231,12 +230,16 @@
     <section class="content-section">
         <div class="content-grid">
             <div class="content-card" data-category="video" data-vip="true" data-also-photo="true" onclick="window.open('https://buy.stripe.com/00w3cu7q883wdsDd70ew80w','_blank')">
-                <div class="card-media" style="background: linear-gradient(135deg, #0d1b2a, #1b2838); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;">
-                    <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #0088cc, #005f8f); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(0,136,204,0.35);">
-                        <i class="fab fa-telegram" style="font-size: 50px; color: #fff;"></i>
+                <div class="card-media" style="background-image: url('soumaya-preview.jpg'); background-size: cover; background-position: center;">
+                    <div class="card-overlay">
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <div style="width: 34px; height: 34px; background: linear-gradient(135deg, #0088cc, #005f8f); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink:0; box-shadow: 0 0 16px rgba(0,136,204,0.5);">
+                                <i class="fab fa-telegram" style="font-size: 16px; color: #fff;"></i>
+                            </div>
+                            <div style="color: #fff; font-size: 13px; font-weight: 700; line-height:1.2;">Acces Prive<br>Telegram</div>
+                        </div>
                     </div>
-                    <div style="color: #fff; font-size: 16px; font-weight: 700; text-align: center; padding: 0 16px; z-index: 2; position: relative;">Acces Prive Telegram</div>
-                    <div class="card-badge" style="background: linear-gradient(135deg, #0088cc, #005f8f); top: 10px; right: 10px;">TELEGRAM</div>
+                    <div class="card-badge" style="background: linear-gradient(135deg, #0088cc, #005f8f);">TELEGRAM</div>
                 </div>
                 <div class="card-info">
                     <div class="card-title">Rejoins mon Telegram prive </div>
@@ -317,12 +320,16 @@
     <section class="content-section">
         <div class="content-grid">
             <div class="content-card" data-category="video" data-vip="true" data-also-photo="true" onclick="window.open('https://buy.stripe.com/9B67sK11KcjMewHgjcew80x', '_blank')">
-                <div class="card-media" style="background: linear-gradient(135deg, #0d1b2a, #1b2838); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;">
-                    <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #0088cc, #005f8f); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(0,136,204,0.35);">
-                        <i class="fab fa-telegram" style="font-size: 50px; color: #fff;"></i>
+                <div class="card-media" style="background-image: url('imendz-preview.jpg'); background-size: cover; background-position: center;">
+                    <div class="card-overlay">
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <div style="width: 34px; height: 34px; background: linear-gradient(135deg, #0088cc, #005f8f); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink:0; box-shadow: 0 0 16px rgba(0,136,204,0.5);">
+                                <i class="fab fa-telegram" style="font-size: 16px; color: #fff;"></i>
+                            </div>
+                            <div style="color: #fff; font-size: 13px; font-weight: 700; line-height:1.2;">Acces Prive<br>Telegram</div>
+                        </div>
                     </div>
-                    <div style="color: #fff; font-size: 16px; font-weight: 700; text-align: center; padding: 0 16px; z-index: 2; position: relative;">Acces Prive Telegram</div>
-                    <div class="card-badge" style="background: linear-gradient(135deg, #0088cc, #005f8f); top: 10px; right: 10px;">TELEGRAM</div>
+                    <div class="card-badge" style="background: linear-gradient(135deg, #0088cc, #005f8f);">TELEGRAM</div>
                 </div>
                 <div class="card-info">
                     <div class="card-title">Rejoins mon Telegram prive </div>

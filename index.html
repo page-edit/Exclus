@@ -168,15 +168,86 @@
         .age-gate-exit { width: 100%; padding: 12px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.12); color: #888; border-radius: 12px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; }
         .age-gate-exit:hover { border-color: rgba(255, 255, 255, 0.3); color: #aaa; }
 
+        .home-page { min-height: 100vh; position: relative; }
+        .home-hero { position: relative; padding: 70px 24px 50px; text-align: center; overflow: hidden; }
+        .home-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(255, 107, 157, 0.18), transparent 70%); pointer-events: none; z-index: 0; }
+        .home-hero-inner { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
+        .home-title { font-size: 32px; font-weight: 800; line-height: 1.25; margin-bottom: 14px; }
+        .home-title span { background: linear-gradient(135deg, #ff6b9d, #c44569); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .home-tagline { color: #999; font-size: 15px; line-height: 1.6; margin-bottom: 26px; }
+        .btn-models { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 44px; background: linear-gradient(135deg, #ff6b9d, #c44569); color: #fff; border: none; border-radius: 30px; font-size: 16px; font-weight: 700; text-decoration: none; cursor: pointer; box-shadow: 0 6px 30px rgba(255, 107, 157, 0.4); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; }
+        .btn-models:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(255, 107, 157, 0.6); }
+        .btn-models-nav { padding: 9px 20px; font-size: 13px; border-radius: 20px; box-shadow: none; }
+        .twitter-banner { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(29, 155, 240, 0.08); border: 1px solid rgba(29, 155, 240, 0.3); border-radius: 14px; padding: 12px 18px; margin: 26px auto 0; max-width: 280px; text-decoration: none; transition: all 0.3s; }
+        .twitter-banner:hover { background: rgba(29, 155, 240, 0.15); border-color: rgba(29, 155, 240, 0.5); transform: translateY(-1px); }
+        .twitter-banner .x-icon { width: 20px; height: 20px; flex-shrink: 0; }
+        .twitter-banner span { color: #fff; font-size: 13px; font-weight: 600; }
+        .home-features { max-width: 680px; margin: 10px auto 0; padding: 10px 24px 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .feature-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px; padding: 22px 14px; text-align: center; }
+        .feature-card i { font-size: 22px; color: #ff6b9d; margin-bottom: 10px; }
+        .feature-card h3 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+        .feature-card p { font-size: 11px; color: #777; line-height: 1.4; }
+        .home-bottom-cta { text-align: center; padding: 10px 24px 60px; }
+        .back-home-link { color: #888; text-decoration: none; }
+        .back-home-link:hover, .back-home-link.active { color: #fff; }
+        .btn-back { width: 36px; height: 36px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50%; color: #fff; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; flex-shrink: 0; }
+        .btn-back:hover { background: rgba(255, 107, 157, 0.2); border-color: #ff6b9d; }
+        @media (max-width: 600px) {
+            .home-title { font-size: 26px; }
+            .home-features { grid-template-columns: 1fr; }
+        }
     </style>
 <base target="_blank">
 </head>
 <body>
-    <div class="profile-page" data-profile="soumaya" data-followers-base="45200" data-likes-base="892">
+    <div class="home-page" id="homePage">
+        <nav class="navbar">
+            <div class="logo">Exclus.fans</div>
+            <div class="nav-links">
+                <a href="#" class="active">Accueil</a>
+                <a href="#" onclick="switchProfile('soumaya')">Explorer</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-models btn-models-nav" onclick="switchProfile('soumaya')">Modeles</button>
+            </div>
+        </nav>
+        <section class="home-hero">
+            <div class="home-hero-inner">
+                <h1 class="home-title">Le <span>contenu exclusif</span><br>de tes creatrices preferees</h1>
+                <p class="home-tagline">Exclus.fans est la plateforme qui te connecte directement a tes creatrices favorites. Abonnements, contenu prive et acces exclusif, le tout au meme endroit.</p>
+                <button class="btn-models" onclick="switchProfile('soumaya')">Voir les modeles</button>
+                <a class="twitter-banner" href="https://x.com/ines_dz23?s=21" target="_blank" rel="noopener">
+                    <svg class="x-icon" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <span>Suis-nous sur X</span>
+                </a>
+            </div>
+        </section>
+        <section class="home-features">
+            <div class="feature-card">
+                <i class="fas fa-lock"></i>
+                <h3>Contenu exclusif</h3>
+                <p>Photos et videos reservees a tes abonnes.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-halved"></i>
+                <h3>Paiement securise</h3>
+                <p>Transactions traitees via Stripe.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h3>Acces direct</h3>
+                <p>Rejoins le Telegram prive de chaque creatrice.</p>
+            </div>
+        </section>
+        <div class="home-bottom-cta">
+            <button class="btn-models" onclick="switchProfile('soumaya')">Modeles</button>
+        </div>
+    </div>
+    <div class="profile-page" data-profile="soumaya" data-followers-base="45200" data-likes-base="892" hidden>
     <nav class="navbar">
-        <div class="logo">Exclus.fans</div>
+        <div style="display:flex;align-items:center;gap:12px;"><button class="btn-back" onclick="goHome()" title="Retour a l'accueil"><i class="fas fa-arrow-left"></i></button><div class="logo">Exclus.fans</div></div>
         <div class="nav-links">
-            <a href="#" class="active">Accueil</a>
+            <a href="#" class="back-home-link" onclick="goHome()">Accueil</a>
             <a href="#">Explorer</a>
             <a href="#">Messages</a>
         </div>
@@ -265,9 +336,9 @@
 
     <div class="profile-page" data-profile="imendz" data-followers-base="22800" data-likes-base="540" hidden>
     <nav class="navbar">
-        <div class="logo">Exclus.fans</div>
+        <div style="display:flex;align-items:center;gap:12px;"><button class="btn-back" onclick="goHome()" title="Retour a l'accueil"><i class="fas fa-arrow-left"></i></button><div class="logo">Exclus.fans</div></div>
         <div class="nav-links">
-            <a href="#" class="active">Accueil</a>
+            <a href="#" class="back-home-link" onclick="goHome()">Accueil</a>
             <a href="#">Explorer</a>
             <a href="#">Messages</a>
         </div>
@@ -356,9 +427,9 @@
 
     <div class="profile-page" data-profile="laila92i" data-followers-base="18500" data-likes-base="410" hidden>
     <nav class="navbar">
-        <div class="logo">Exclus.fans</div>
+        <div style="display:flex;align-items:center;gap:12px;"><button class="btn-back" onclick="goHome()" title="Retour a l'accueil"><i class="fas fa-arrow-left"></i></button><div class="logo">Exclus.fans</div></div>
         <div class="nav-links">
-            <a href="#" class="active">Accueil</a>
+            <a href="#" class="back-home-link" onclick="goHome()">Accueil</a>
             <a href="#">Explorer</a>
             <a href="#">Messages</a>
         </div>
@@ -447,10 +518,16 @@
 
     <script>
         function switchProfile(profile) {
+            document.getElementById('homePage').setAttribute('hidden', '');
             document.querySelectorAll('.profile-page').forEach(page => {
                 if (page.getAttribute('data-profile') === profile) { page.removeAttribute('hidden'); }
                 else { page.setAttribute('hidden', ''); }
             });
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+        function goHome() {
+            document.querySelectorAll('.profile-page').forEach(page => page.setAttribute('hidden', ''));
+            document.getElementById('homePage').removeAttribute('hidden');
             window.scrollTo({ top: 0, behavior: 'auto' });
         }
         function openVideoPage(triggerEl, url) {

@@ -243,7 +243,7 @@
             <button class="btn-models" onclick="switchProfile('soumaya')">Modeles</button>
         </div>
     </div>
-    <div class="profile-page" data-profile="soumaya" data-followers-base="45200" data-likes-base="892" hidden>
+    <div class="profile-page" data-profile="soumaya" data-members-base="45200" hidden>
     <nav class="navbar">
         <div style="display:flex;align-items:center;gap:12px;"><button class="btn-back" onclick="goHome()" title="Retour a l'accueil"><i class="fas fa-arrow-left"></i></button><div class="logo">Exclus.fans</div></div>
         <div class="nav-links">
@@ -269,8 +269,7 @@
                     <div class="profile-bio">Venez je ne mords pas ! </div>
                     <div class="profile-stats">
                         <div class="profile-stat"><div class="profile-stat-number stat-posts-el">1</div><div class="profile-stat-label">Publications</div></div>
-                        <div class="profile-stat"><div class="profile-stat-number stat-followers-el">45.2K</div><div class="profile-stat-label">Abonnes</div></div>
-                        <div class="profile-stat"><div class="profile-stat-number stat-likes-el">892</div><div class="profile-stat-label">J'aime</div></div>
+                        <div class="profile-stat"><div class="profile-stat-number stat-members-el">45.2K</div><div class="profile-stat-label">Membres Telegram</div></div>
                     </div>
                     <div class="profile-actions">
                     </div>
@@ -334,7 +333,7 @@
     </div>
     </div>
 
-    <div class="profile-page" data-profile="imendz" data-followers-base="22800" data-likes-base="540" hidden>
+    <div class="profile-page" data-profile="imendz" data-members-base="22800" hidden>
     <nav class="navbar">
         <div style="display:flex;align-items:center;gap:12px;"><button class="btn-back" onclick="goHome()" title="Retour a l'accueil"><i class="fas fa-arrow-left"></i></button><div class="logo">Exclus.fans</div></div>
         <div class="nav-links">
@@ -360,8 +359,7 @@
                     <div class="profile-bio">Je suis pieuse et un peu folle </div>
                     <div class="profile-stats">
                         <div class="profile-stat"><div class="profile-stat-number stat-posts-el">1</div><div class="profile-stat-label">Publications</div></div>
-                        <div class="profile-stat"><div class="profile-stat-number stat-followers-el">22.8K</div><div class="profile-stat-label">Abonnes</div></div>
-                        <div class="profile-stat"><div class="profile-stat-number stat-likes-el">540</div><div class="profile-stat-label">J'aime</div></div>
+                        <div class="profile-stat"><div class="profile-stat-number stat-members-el">22.8K</div><div class="profile-stat-label">Membres Telegram</div></div>
                     </div>
                     <div class="profile-actions">
                     </div>
@@ -425,7 +423,7 @@
     </div>
     </div>
 
-    <div class="profile-page" data-profile="laila92i" data-followers-base="18500" data-likes-base="410" hidden>
+    <div class="profile-page" data-profile="laila92i" data-members-base="18500" hidden>
     <nav class="navbar">
         <div style="display:flex;align-items:center;gap:12px;"><button class="btn-back" onclick="goHome()" title="Retour a l'accueil"><i class="fas fa-arrow-left"></i></button><div class="logo">Exclus.fans</div></div>
         <div class="nav-links">
@@ -451,8 +449,7 @@
                     <div class="profile-bio">Viens decouvrir mon univers </div>
                     <div class="profile-stats">
                         <div class="profile-stat"><div class="profile-stat-number stat-posts-el">1</div><div class="profile-stat-label">Publications</div></div>
-                        <div class="profile-stat"><div class="profile-stat-number stat-followers-el">18.5K</div><div class="profile-stat-label">Abonnes</div></div>
-                        <div class="profile-stat"><div class="profile-stat-number stat-likes-el">410</div><div class="profile-stat-label">J'aime</div></div>
+                        <div class="profile-stat"><div class="profile-stat-number stat-members-el">18.5K</div><div class="profile-stat-label">Membres Telegram</div></div>
                     </div>
                     <div class="profile-actions">
                     </div>
@@ -636,25 +633,12 @@
             document.querySelectorAll('.navbar').forEach(navbar => { navbar.style.background = 'rgba(10, 10, 15, ' + opacity + ')'; });
         });
         function animateStats() {
-            document.querySelectorAll('.live-stat').forEach(stat => {
-                const base = parseInt(stat.getAttribute('data-base'));
-                const variation = Math.floor(Math.random() * 20) - 10;
-                const newValue = base + variation;
-                stat.style.opacity = '0.3';
-                setTimeout(() => { stat.style.opacity = '1'; }, 150);
-                stat.textContent = newValue >= 1000 ? (newValue / 1000).toFixed(1) + 'K' : newValue;
-            });
             document.querySelectorAll('.profile-page').forEach(page => {
-                const followersBase = parseInt(page.getAttribute('data-followers-base'));
-                const followersVariation = Math.floor(Math.random() * 50) - 25;
-                const newFollowers = followersBase + followersVariation;
-                const followersEl = page.querySelector('.stat-followers-el');
-                if (followersEl) followersEl.textContent = (newFollowers / 1000).toFixed(1) + 'K';
-                const likesBase = parseInt(page.getAttribute('data-likes-base'));
-                const likesVariation = Math.floor(Math.random() * 10) - 5;
-                const newLikes = likesBase + likesVariation;
-                const likesEl = page.querySelector('.stat-likes-el');
-                if (likesEl) likesEl.textContent = newLikes;
+                const membersBase = parseInt(page.getAttribute('data-members-base'));
+                const membersVariation = Math.floor(Math.random() * 50) - 25;
+                const newMembers = membersBase + membersVariation;
+                const membersEl = page.querySelector('.stat-members-el');
+                if (membersEl) membersEl.textContent = (newMembers / 1000).toFixed(1) + 'K';
             });
         }
         function scheduleNextAnimation() {
